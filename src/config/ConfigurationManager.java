@@ -7,6 +7,9 @@ import java.util.List;
 
 public class ConfigurationManager implements IConfigurationManager {
 
+   private String smtpServerAddress;
+   private int smtpServerPort;
+
    @Override
    public List<Person> getVictims() {
 	  return null;

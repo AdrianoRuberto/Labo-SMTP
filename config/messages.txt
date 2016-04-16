@@ -1,0 +1,8 @@
+Subject: Ceci est le sujet
+
+Ceci est le prank
+
+==
+Subject: Ceci est le 2eme sujet
+
+Ceci est le 2eme prank
