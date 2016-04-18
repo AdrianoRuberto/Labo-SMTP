@@ -1,41 +1,80 @@
 package config;
 
-import model.mail.Message;
 import model.mail.Person;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+import java.util.stream.Collectors;
 
-public class ConfigurationManager implements IConfigurationManager {
-
-   private final LinkedList<Person> victims;
-   private final LinkedList<String> messages;
+public class ConfigurationManager {
+   private final List<Person> victims;
+   private final List<String> messages;
    private String smtpServerAddress;
    private int smtpServerPort;
+   private int numberOfGroups;
+   private List<Person> witnesses;
+   private StringBuilder sb;
 
    public ConfigurationManager() throws IOException {
 	  victims = loadAddressesFromFile("./config/victims.RES");
 	  messages = loadMessagesFromFile("./config/messages.txt");
+	  loadProperties("./config/config.properties");
    }
 
-   private LinkedList<String> loadMessagesFromFile(String s) {
-	  return null;
+   private void loadProperties(String path) throws IOException {
+	  FileInputStream file = new FileInputStream(path);
+	  Properties prop = new Properties();
+	  prop.load(file);
+	  this.smtpServerAddress = prop.getProperty("smtpServerAddress");
+	  this.smtpServerPort = Integer.parseInt(prop.getProperty("smtpServerPort"));
+	  this.numberOfGroups = Integer.parseInt(prop.getProperty("numberOfGroups"));
+	  this.witnesses = Arrays.stream(prop.getProperty("witnessToCC").split(","))
+							 .map(Person::new)
+							 .collect(Collectors.toList());
    }
 
-   private LinkedList<Person> loadAddressesFromFile(String s) {
-	  LinkedList<Person> results;
-	  //try(FileStream)
-	  return null;
-
+   private List<String> loadMessagesFromFile(String filename) throws IOException {
+	  try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
+		 return Arrays.asList(reader.lines().reduce((a, b) -> a + "\r\n" + b).get().split("//////"));
+	  }
    }
 
-   @Override
-   public LinkedList<Person> getVictims() {
-	  return null;
+   private List<Person> loadAddressesFromFile(String filename) throws IOException {
+	  try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
+		 return reader.lines().map(Person::new).collect(Collectors.toList());
+	  }
    }
 
-   @Override
-   public LinkedList<Message> getMessages() {
-	  return null;
+   public List<Person> getVictims() {
+	  return victims;
+   }
+
+   public List<String> getMessages() {
+	  return messages;
+   }
+
+   public String getSmtpServerAddress() {
+	  return smtpServerAddress;
+   }
+
+   public int getSmtpServerPort() {
+	  return smtpServerPort;
+   }
+
+   public int getNumberOfGroups() {
+	  return numberOfGroups;
+   }
+
+   public List<Person> getWitnesses() {
+	  return witnesses;
+   }
+
+   public void setWitnesses(List<Person> witnesses) {
+	  this.witnesses = witnesses;
    }
 }

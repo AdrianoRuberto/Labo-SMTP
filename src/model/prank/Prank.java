@@ -9,6 +9,7 @@ import model.mail.Message;
 import model.mail.Person;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Prank {
 
@@ -25,16 +26,20 @@ public class Prank {
 	  return witnessR;
    }
 
-   public void addVictimRecipients(LinkedList<Person> ps) {
+   public void addVictimRecipients(List<Person> ps) {
 	  victimR.addAll(ps);
    }
 
-   public void addWitnessRecipients(LinkedList<Person> ps) {
+   public void addWitnessRecipients(List<Person> ps) {
 	  witnessR.addAll(ps);
    }
 
-   public Person getVictimSender() {
+   public Person getSender() {
 	  return sender;
+   }
+
+   public void setSender(Person sender) {
+	  this.sender = sender;
    }
 
    public String getMessage() {
@@ -48,7 +53,10 @@ public class Prank {
    public Message generateMessage() {
 	  Message msg = new Message();
 	  msg.setBody(this.message + "\r\n" + sender.getFirstName());
+	  msg.setTo(victimR.stream().map(Person::getAddress).toArray(String[]::new));
+	  msg.setCc(witnessR.stream().map(Person::getAddress).toArray(String[]::new));
+	  msg.setFrom(sender.getAddress());
 
+	  return msg;
    }
-
 }
