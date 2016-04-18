@@ -5,4 +5,16 @@ package model.mail;
  * Auteur : Adriano Ruberto
  */
 
-public class Group {}
+import java.util.LinkedList;
+
+public class Group {
+   private LinkedList<Person> members = new LinkedList<>();
+
+   public void addMember(Person p) {
+	  members.add(p);
+   }
+
+   public LinkedList<Person> getMembers() {
+	  return members;
+   }
+}
