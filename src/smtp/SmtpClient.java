@@ -4,7 +4,8 @@
  Fichier     : SmtpClient.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Permet d'envoyer un message en utilisant les configurations prédéfinies
+ Description : Represents a SMTP client which is able to send messages.
+     		   It needs a few parameters such as the port number and the address of the server.
  -----------------------------------------------------------------------------------
  */
 
@@ -28,12 +29,12 @@ public class SmtpClient implements ISmtpClient {
    @Override
    public void sendMessage(Message message) {
 	  try {
-		  // Connexion socket
+		  // Socket connection
 		 Socket socket = new Socket(cm.getSmtpServerAddress(), cm.getSmtpServerPort());
 		 PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 		 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
-		 System.out.println(reader.readLine()); // Consume la première ligne
+		 System.out.println(reader.readLine()); // Consume first line
 		 writer.printf("EHLO " + cm.getSmtpServerAddress() + "\r\n");
 		 String line = reader.readLine();
 		 System.out.println(line);

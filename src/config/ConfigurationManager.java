@@ -4,7 +4,9 @@
  Fichier     : ConfigurationManager.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Permet de lire les fichiers de configuration et de rcéupérer les paramètres prédéfinis
+ Description : It is probably one of the most important classes of our project.
+               It is responsible of parsing the configuration files and retrieving
+               the available victims and messages. More, it imports the server configuration.
  -----------------------------------------------------------------------------------
  */
 

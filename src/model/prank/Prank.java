@@ -6,7 +6,8 @@ package model.prank;
  Fichier     : Prank.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Représente une campagne avec une liste de destinataires, un expéditeur et un message
+ Description : This is a joke to send. So it registers the sender, the recipients,
+               the witnesses and the message body. It would be used to generate the messages to send.
  -----------------------------------------------------------------------------------
  */
 
@@ -18,16 +19,16 @@ import java.util.List;
 
 public class Prank {
 
-    // destinataires
+    // recipients
    private final LinkedList<Person> victimR = new LinkedList<>();
 
-    // témoins
+    // witnesses
    private final LinkedList<Person> witnessR = new LinkedList<>();
 
-    // expéditeur
+    // sender
    private Person sender;
 
-    // contenu du message
+    // message body
    private String message;
 
    public LinkedList<Person> getVictimRecipients() {
@@ -64,12 +65,12 @@ public class Prank {
 
     /*
     ----------------------------------------------------------------------------------
-    Description  : Retourne le message construit avec tous ses en-têtes
+    Description  : Return generated message with all its headers
 
     ----------------------------------------------------------------------------------
      */
    public Message generateMessage() {
-       // construction du message a proprement parler
+       // Message generation
 	  Message msg = new Message();
 	  msg.setBody(this.message + "\r\n" + sender.getFirstName());
 	  msg.setTo(victimR.stream().map(Person::getAddress).toArray(String[]::new));

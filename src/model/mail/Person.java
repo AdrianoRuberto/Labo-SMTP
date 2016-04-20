@@ -6,7 +6,8 @@ package model.mail;
  Fichier     : Person.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Représente une personne qui peut être un destinataire ou un expéditeur
+ Description : It represents a victim, who has a name, a first name and an email address.
+ 			   This address has to be validated before a message can be sent.
  -----------------------------------------------------------------------------------
  */
 
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 public class Person {
    private String firstName;
    private String lastName;
-   private String address; // IMPORTANT : addresse utilisée pour l'envoi
+   private String address; // IMPORTANT : addresse used to send email
 
    public Person(String firstName, String lastName, String address) {
 	  this.firstName = firstName;
@@ -25,7 +26,7 @@ public class Person {
    }
 
    public Person(String address) {
-	   // Validation du format de l'email
+	   // Email validation
 	  Pattern pattern = Pattern.compile("(.*)\\.(.*)@");
 	  Matcher matcher = pattern.matcher(address);
 	  if (!matcher.find()) throw new RuntimeException("The address " + address + " has not the right format");

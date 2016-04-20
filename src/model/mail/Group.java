@@ -6,7 +6,7 @@ package model.mail;
  Fichier     : Group.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Représente un groupe de victimes
+ Description : As its name indicates, it is a group of victims, from which the PrankGenerator gets its victims.
  -----------------------------------------------------------------------------------
  */
 

@@ -5,12 +5,13 @@ package model.mail;
  Fichier     : Message.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Représente un message à , avec ses différents en-têtes, utiles pour l'envoi
+ Description : A message object contains the entire information needed to sent an email,
+               including the message body and the headers.
  -----------------------------------------------------------------------------------
  */
 
 public class Message {
-    // en-têtes
+    // headers
    private String from;
    private String[] to;
    private String[] cc;
@@ -24,7 +25,7 @@ public class Message {
 	  bcc = new String[0];
    }
 
-    // setters et getters des en-têtes
+    // headers setters and getters
    public String getBody() {
 	  return body;
    }
