@@ -1,9 +1,14 @@
-package smtp;
 /*
- * Projet : Labo-SMTP
- * Créé le 16.04.2016.
- * Auteur : Adriano Ruberto
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo-SMTP
+ Fichier     : SmtpClient.java
+ Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ Date        : 20.04.2016
+ Description : Permet d'envoyer un message en utilisant les configurations prédéfinies
+ -----------------------------------------------------------------------------------
  */
+
+package smtp;
 
 import config.ConfigurationManager;
 import model.mail.Message;
@@ -23,6 +28,7 @@ public class SmtpClient implements ISmtpClient {
    @Override
    public void sendMessage(Message message) {
 	  try {
+		  // Connexion socket
 		 Socket socket = new Socket(cm.getSmtpServerAddress(), cm.getSmtpServerPort());
 		 PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 		 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));

@@ -1,3 +1,13 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo-SMTP
+ Fichier     : ConfigurationManager.java
+ Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ Date        : 20.04.2016
+ Description : Permet de lire les fichiers de configuration et de rcéupérer les paramètres prédéfinis
+ -----------------------------------------------------------------------------------
+ */
+
 package config;
 
 import model.mail.Person;

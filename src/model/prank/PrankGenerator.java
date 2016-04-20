@@ -1,8 +1,13 @@
 package model.prank;
+
 /*
- * Projet : Labo-SMTP
- * Créé le 16.04.2016.
- * Auteur : Adriano Ruberto
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo-SMTP
+ Fichier     : PrankGenerator.java
+ Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ Date        : 20.04.2016
+ Description : Génère les groupes avec les expéditeur, les destinataires et les témoins
+ -----------------------------------------------------------------------------------
  */
 
 import config.ConfigurationManager;
@@ -20,6 +25,12 @@ public class PrankGenerator {
 	  this.cm = cm;
    }
 
+	/*
+    ----------------------------------------------------------------------------------
+    Description  : Récupération des campagnes avec expéditeur, destinataires, temoins et message
+
+    ----------------------------------------------------------------------------------
+     */
    public List<Prank> pranks() {
 	  List<Prank> pranks = new LinkedList<>();
 	  List<String> messages = cm.getMessages();
@@ -34,14 +45,14 @@ public class PrankGenerator {
 	  for (Group group : groups) {
 		 Prank prank = new Prank();
 		 List<Person> victims = group.getMembers();
-		 Collections.shuffle(victims);
-		 Person sender = victims.remove(0);
-		 prank.setSender(sender);
-		 prank.addVictimRecipients(victims);
+		 Collections.shuffle(victims); // mélange
+		 Person sender = victims.remove(0); // première victime du groupe
+		 prank.setSender(sender); // expéditeur
+		 prank.addVictimRecipients(victims); // destinataires
 
-		 prank.addWitnessRecipients(cm.getWitnesses());
+		 prank.addWitnessRecipients(cm.getWitnesses()); // témoins
 
-		 String message = messages.get(messageIndex);
+		 String message = messages.get(messageIndex); // contenu du message
 		 messageIndex = (messageIndex + 1) % messages.size();
 		 prank.setMessage(message);
 
@@ -52,9 +63,15 @@ public class PrankGenerator {
 	  return pranks;
    }
 
+	/*
+    ----------------------------------------------------------------------------------
+    Description  : Construction des groupes
+
+    ----------------------------------------------------------------------------------
+     */
    public List<Group> groups(List<Person> victims, int numberOfGroups) {
 	  List<Person> availableVictims = new LinkedList<>(victims);
-	  Collections.shuffle(availableVictims);
+	  Collections.shuffle(availableVictims); // mélange
 	  List<Group> groups = new LinkedList<>();
 	  for (int i = 0; i < numberOfGroups; ++i) {
 		 groups.add(new Group());
@@ -65,6 +82,7 @@ public class PrankGenerator {
 		 targetGroup = groups.get(turn);
 		 turn = (turn + 1) % groups.size();
 		 Person victim = availableVictims.remove(0);
+		  // affectation de la victime au groupe
 		 targetGroup.addMember(victim);
 	  }
 

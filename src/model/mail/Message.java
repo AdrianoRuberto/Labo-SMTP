@@ -1,11 +1,16 @@
 package model.mail;
 /*
- * Projet : Labo-SMTP
- * Créé le 16.04.2016.
- * Auteur : Adriano Ruberto
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo-SMTP
+ Fichier     : Message.java
+ Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ Date        : 20.04.2016
+ Description : Représente un message à , avec ses différents en-têtes, utiles pour l'envoi
+ -----------------------------------------------------------------------------------
  */
 
 public class Message {
+    // en-têtes
    private String from;
    private String[] to;
    private String[] cc;
@@ -19,6 +24,7 @@ public class Message {
 	  bcc = new String[0];
    }
 
+    // setters et getters des en-têtes
    public String getBody() {
 	  return body;
    }

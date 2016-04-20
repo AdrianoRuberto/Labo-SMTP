@@ -1,8 +1,14 @@
-package smtp;/*
- * Projet : Labo-SMTP
- * Créé le 16.04.2016.
- * Auteur : Adriano Ruberto
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo-SMTP
+ Fichier     : ISmtpClient.java
+ Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ Date        : 20.04.2016
+ Description : Représente une interface de client SMTP permettant d'envoyer un email
+ -----------------------------------------------------------------------------------
  */
+
+package smtp;
 
 import model.mail.Message;
 
