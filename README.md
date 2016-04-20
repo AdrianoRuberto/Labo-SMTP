@@ -30,7 +30,7 @@ Configuration can be done through the /config folder. It contains three files:
   //////
 
 ## Implementation
-![](https://github.com/AdrianoRuberto/Labo-SMTP/master/figures/diagram.png)
+![](https://github.com/AdrianoRuberto/Labo-SMTP/blob/master/figures/diagram.png)
 
 
 ## Installing and using a mock Server
