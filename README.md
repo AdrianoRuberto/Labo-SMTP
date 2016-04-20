@@ -13,14 +13,14 @@ trouble to use the software we developped. The installation of the mock server i
 
 Configuration can be done through the /config folder. It contains three files:
 
-* config.properties  
+* **config.properties**  
   This file contains the SMTP server configuration (address and port), the number of groups to generate and the witness adress which to send a copy of emails.
   Be carefull to have enough adresses in the victim's list to have at least three addresses per group.
   
-* victims.RES  
+* **victims.RES**  
   It contains the victims list. Each address needs one line.
   
-* messages.txt  
+* **messages.txt**  
   This file contains the messages to be sent. Each message has a subject and a body and is registred as below:
   
   Subject: Ceci est le sujet
@@ -34,29 +34,29 @@ Configuration can be done through the /config folder. It contains three files:
 
 We quite used a similar structure as the one described in the webcast.
 
-* MainRobot  
+* **MainRobot**  
   This class initializes the application. It imports the configurations and use it to first create a wave of pranks to send using the
   PrankGenerator and then send them with the smtp client he created.
 
-* SmtpClient  
+* **SmtpClient**  
   It represents a SMTP client which is able to send messages. It needs a few parameters such as the port number and the address of the server. 
 
-* ConfigurationManager  
+* **ConfigurationManager**  
   It is probably one of the most important classes of our project. It is responsible of parsing the configuration files and retrieving the available victims and messages. More, it imports the server configuration. 
 
-* Prank  
+* **Prank**  
   This is a joke to send. So it registers the sender, the recipients, the witnesses and the message body. It would be used to generate the messages to send.
 
-* PrankGenerator  
+* **PrankGenerator**  
   It is used to generate groups and pranks. Depending of the configuration, it devides victims into random groups and then generate a prank for every group, determinating randomly sender and victims.
 
-* Group  
+* **Group**  
   As its name indicates, it is a group of victims, from which the PrankGenerator gets its victims.
 
-* Person  
+* **Person**  
   It represents a victim, who has a name, a first name and an email address. This address has to be validated before a message can be sent.
 
-* Message  
+* **Message**  
   A message object contains the entire information needed to sent an email, including the message body and the headers.
 
 
