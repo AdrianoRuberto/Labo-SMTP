@@ -32,7 +32,7 @@ Configuration can be done through the /config folder. It contains three files:
 ## Implementation
 ![](https://github.com/AdrianoRuberto/Labo-SMTP/blob/master/figures/diagram.png)
 
-We quite used the structure described in the webcast.
+We quite used a similar structure as the one described in the webcast.
 
 * MainRobot  
   This class initializes the application. It imports the configurations and use it to first create a wave of pranks to send using the
