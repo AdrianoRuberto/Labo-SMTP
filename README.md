@@ -1,4 +1,6 @@
 # RES - Labo SMTP
+### Adriano Ruberto & Matthieu Villard
+
 
 ## Objectives
 
