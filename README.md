@@ -32,6 +32,18 @@ Configuration can be done through the /config folder. It contains three files:
 ## Implementation
 ![](https://github.com/AdrianoRuberto/Labo-SMTP/blob/master/figures/diagram.png)
 
+We quite used the structure described in the webcast.
+
+* MainRobot
+  This class initializes the application. It imports the configurations and use it to first create a wave of pranks to send using the
+  PrankGenerator and then send them with the smtp client he created.
+
+* SmtpClient
+  It represents a SMTP client which is able to send messages. It needs a few parameters such as the port number and the address of the server. 
+
+* ConfigurationManager
+  It is probably one of the most important classes of our project. It is responsible of parsing the configuration files and retrieving the available victims and messages. More, it imports the server configuration. 
+
 
 ## Installing and using a mock Server
 
