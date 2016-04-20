@@ -35,20 +35,17 @@ Configuration can be done through the /config folder. It contains three files:
 
 As already said, to test or use this application without truly sending emails to recipients, we have to use a mock server.  $
 
-To test our work, we used FakeSMTP, a mock server running on a JVM.
-      
-## Evaluation
+To test our work, we used FakeSMTP, a mock server running on a JVM. So, we could see every sent email and open it with an email software.
 
-* You can work in **groups of 2 students**. 
+To install FakeSMTP, do:
 
-* You are free to **form these groups as you wish**.
+* download FakeSMTP at https://nilhcem.github.io/FakeSMTP/download.html
 
-* However, we strongly believe that **everybody will benefit if a more experienced student works with a more junior one in a "smart way"** (i.e. does not do all the work, but leads the way). For the experienced student, it is a good opportunity to develop coaching and mentoring skills. For the junior student, it is a good opportunity to learn good practices from a peer.
+* Launch it
 
-* Your code and report will be evaluated and you will get a full lab grade. You will also be asked to **do a 5' demo** of your application. Make sure that you prepare a clear and convincing demo scenario in advance.
+* Select the SMTP port and start the SMTP server
 
-
-
+When the mock server is running, every sent email appears dynamically.
 
 
 
