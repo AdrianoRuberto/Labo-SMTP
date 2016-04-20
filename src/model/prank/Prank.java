@@ -1,15 +1,14 @@
-package model.prank;
-
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo-SMTP
  Fichier     : Prank.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : This is a joke to send. So it registers the sender, the recipients,
-               the witnesses and the message body. It would be used to generate the messages to send.
+ Description : Represent a prank
  -----------------------------------------------------------------------------------
  */
+
+package model.prank;
 
 import model.mail.Message;
 import model.mail.Person;
@@ -19,23 +18,16 @@ import java.util.List;
 
 public class Prank {
 
-    // recipients
-   private final LinkedList<Person> victimR = new LinkedList<>();
-
-    // witnesses
-   private final LinkedList<Person> witnessR = new LinkedList<>();
-
-    // sender
+   private final List<Person> victimR = new LinkedList<>();
+   private final List<Person> witnessR = new LinkedList<>();
    private Person sender;
-
-    // message body
    private String message;
 
-   public LinkedList<Person> getVictimRecipients() {
+   public List<Person> getVictimRecipients() {
 	  return victimR;
    }
 
-   public LinkedList<Person> getWitnessRecipients() {
+   public List<Person> getWitnessRecipients() {
 	  return witnessR;
    }
 
@@ -63,14 +55,11 @@ public class Prank {
 	  this.message = message;
    }
 
-    /*
-    ----------------------------------------------------------------------------------
-    Description  : Return generated message with all its headers
-
-    ----------------------------------------------------------------------------------
-     */
+   /**
+	* @return a generate message with the involved person
+	*/
    public Message generateMessage() {
-       // Message generation
+	  // construction du message a proprement parler
 	  Message msg = new Message();
 	  msg.setBody(this.message + "\r\n" + sender.getFirstName());
 	  msg.setTo(victimR.stream().map(Person::getAddress).toArray(String[]::new));

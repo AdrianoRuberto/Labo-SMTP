@@ -1,12 +1,10 @@
-/*
+/**
  -----------------------------------------------------------------------------------
  Laboratoire : Labo-SMTP
  Fichier     : ConfigurationManager.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : It is probably one of the most important classes of our project.
-               It is responsible of parsing the configuration files and retrieving
-               the available victims and messages. More, it imports the server configuration.
+ Description : Allow the read a config file and get predefined settings
  -----------------------------------------------------------------------------------
  */
 
@@ -30,7 +28,6 @@ public class ConfigurationManager {
    private int smtpServerPort;
    private int numberOfGroups;
    private List<Person> witnesses;
-   private StringBuilder sb;
 
    public ConfigurationManager() throws IOException {
 	  victims = loadAddressesFromFile("./config/victims.RES");
@@ -38,6 +35,11 @@ public class ConfigurationManager {
 	  loadProperties("./config/config.properties");
    }
 
+   /**
+	* Load the settings from a file
+	* @param path the file path
+	* @throws IOException
+	*/
    private void loadProperties(String path) throws IOException {
 	  FileInputStream file = new FileInputStream(path);
 	  Properties prop = new Properties();
@@ -50,12 +52,24 @@ public class ConfigurationManager {
 							 .collect(Collectors.toList());
    }
 
+   /**
+	* Give a list of message from a file
+	* @param filename the filename
+	* @return A list of message
+	* @throws IOException
+	*/
    private List<String> loadMessagesFromFile(String filename) throws IOException {
 	  try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
 		 return Arrays.asList(reader.lines().reduce((a, b) -> a + "\r\n" + b).get().split("//////"));
 	  }
    }
 
+   /**
+	* Give email addresses from a file
+	* @param filename the filename
+	* @return the list
+	* @throws IOException
+	*/
    private List<Person> loadAddressesFromFile(String filename) throws IOException {
 	  try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
 		 return reader.lines().map(Person::new).collect(Collectors.toList());

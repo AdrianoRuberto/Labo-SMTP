@@ -1,17 +1,17 @@
-package model.mail;
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo-SMTP
  Fichier     : Message.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : A message object contains the entire information needed to sent an email,
-               including the message body and the headers.
+ Description : Represent a message with header and other usefull thing for the sending
  -----------------------------------------------------------------------------------
  */
 
+package model.mail;
+
 public class Message {
-    // headers
+   // header
    private String from;
    private String[] to;
    private String[] cc;
@@ -25,7 +25,7 @@ public class Message {
 	  bcc = new String[0];
    }
 
-    // headers setters and getters
+   // setters et getters from header
    public String getBody() {
 	  return body;
    }

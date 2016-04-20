@@ -4,8 +4,7 @@
  Fichier     : SmtpClient.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : Represents a SMTP client which is able to send messages.
-     		   It needs a few parameters such as the port number and the address of the server.
+ Description : Allow to send a message using a predefined config
  -----------------------------------------------------------------------------------
  */
 
@@ -29,12 +28,12 @@ public class SmtpClient implements ISmtpClient {
    @Override
    public void sendMessage(Message message) {
 	  try {
-		  // Socket connection
+		 // Connexion socket
 		 Socket socket = new Socket(cm.getSmtpServerAddress(), cm.getSmtpServerPort());
 		 PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 		 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
-		 System.out.println(reader.readLine()); // Consume first line
+		 System.out.println(reader.readLine()); // Consume la première ligne
 		 writer.printf("EHLO " + cm.getSmtpServerAddress() + "\r\n");
 		 String line = reader.readLine();
 		 System.out.println(line);
@@ -64,12 +63,14 @@ public class SmtpClient implements ISmtpClient {
 			System.out.println(reader.readLine());
 		 }
 
+		 // BCC
 		 for (String s : message.getBcc()) {
 			writer.write("RCPT TO:<" + s + ">\r\n");
 			writer.flush();
 			System.out.println(reader.readLine());
 		 }
 
+		 // Writting the message
 		 writer.write("DATA\r\n");
 		 writer.flush();
 		 System.out.println(reader.readLine());
@@ -88,6 +89,7 @@ public class SmtpClient implements ISmtpClient {
 		 System.out.println(reader.readLine());
 		 writer.write("QUIT\r\n");
 		 writer.flush();
+		 // Message is sent -> close the different level of writer/reader
 		 writer.close();
 		 reader.close();
 		 socket.close();

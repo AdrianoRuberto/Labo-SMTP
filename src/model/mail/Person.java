@@ -1,15 +1,14 @@
-package model.mail;
-
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo-SMTP
  Fichier     : Person.java
  Auteur(s)   : Adriano Ruberto && Matthieu Villard
  Date        : 20.04.2016
- Description : It represents a victim, who has a name, a first name and an email address.
- 			   This address has to be validated before a message can be sent.
+ Description : Represent a person who can be a sender or a recipient
  -----------------------------------------------------------------------------------
  */
+
+package model.mail;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +16,7 @@ import java.util.regex.Pattern;
 public class Person {
    private String firstName;
    private String lastName;
-   private String address; // IMPORTANT : addresse used to send email
+   private String address;
 
    public Person(String firstName, String lastName, String address) {
 	  this.firstName = firstName;
@@ -25,8 +24,13 @@ public class Person {
 	  this.address = address;
    }
 
+   /**
+	* Create a person using a email address.
+	* The email need to be on the form : [*].[*]@
+	* @param address the address
+	*/
    public Person(String address) {
-	   // Email validation
+	  // Validation du format de l'email
 	  Pattern pattern = Pattern.compile("(.*)\\.(.*)@");
 	  Matcher matcher = pattern.matcher(address);
 	  if (!matcher.find()) throw new RuntimeException("The address " + address + " has not the right format");

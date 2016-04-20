@@ -1,25 +1,30 @@
+/**
+ * -----------------------------------------------------------------------------------
+ * Laboratoire : Labo-SMTP
+ * Fichier     : Group.java
+ * Auteur(s)   : Adriano Ruberto && Matthieu Villard
+ * Date        : 20.04.2016
+ * Description : Represent a group
+ * -----------------------------------------------------------------------------------
+ */
 package model.mail;
 
-/*
- -----------------------------------------------------------------------------------
- Laboratoire : Labo-SMTP
- Fichier     : Group.java
- Auteur(s)   : Adriano Ruberto && Matthieu Villard
- Date        : 20.04.2016
- Description : As its name indicates, it is a group of victims, from which the PrankGenerator gets its victims.
- -----------------------------------------------------------------------------------
- */
-
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Group {
-   private LinkedList<Person> members = new LinkedList<>();
+   private List<Person> members = new LinkedList<>();
 
-   public void addMember(Person p) {
-	  members.add(p);
+   /**
+	* Add a member to the group
+	* @param p
+	*/
+   public void addMember(Person... p) {
+	  Collections.addAll(members, p);
    }
 
-   public LinkedList<Person> getMembers() {
+   public List<Person> getMembers() {
 	  return members;
    }
 }
