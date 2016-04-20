@@ -13,14 +13,14 @@ trouble to use the software we developped. The installation of the mock server i
 
 Configuration can be done through the /config folder. It contains three files:
 
-* config.properties
+* config.properties  
   This file contains the SMTP server configuration (address and port), the number of groups to generate and the witness adress which to send a copy of emails.
   Be carefull to have enough adresses in the victim's list to have at least three addresses per group.
   
-* victims.RES
+* victims.RES  
   It contains the victims list. Each address needs one line.
   
-* messages.txt
+* messages.txt  
   This file contains the messages to be sent. Each message has a subject and a body and is registred as below:
   
   Subject: Ceci est le sujet
