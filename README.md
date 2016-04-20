@@ -22,6 +22,7 @@ Configuration can be done through the /config folder. It contains three files:
   
 * messages.txt
   This file contains the messages to be sent. Each message has a subject and a body and is registred as below:
+  
   Subject: Ceci est le sujet
 
   Ceci est le prank
