@@ -44,6 +44,21 @@ We quite used the structure described in the webcast.
 * ConfigurationManager  
   It is probably one of the most important classes of our project. It is responsible of parsing the configuration files and retrieving the available victims and messages. More, it imports the server configuration. 
 
+* Prank
+  This is a joke to send. So it registers the sender, the recipients, the witnesses and the message body. It would be used to generate the messages to send.
+
+* PrankGenerator
+  It is used to generate groups and pranks. Depending of the configuration, it devides victims into random groups and then generate a prank for every group, determinating randomly sender and victims.
+
+* Group
+  As its name indicates, it is a group of victims, from which the PrankGenerator gets its victims.
+
+* Person
+  It represents a victim, who has a name, a first name and an email address. This address has to be validated before a message can be sent.
+
+* Message
+  A message object contains the entire information needed to sent an email, including the message body and the headers.
+
 
 ## Installing and using a mock Server
 
